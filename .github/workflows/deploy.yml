@@ -21,8 +21,6 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build the application
-        run: npm run start  # Adjust this command based on your build script
 
   deploy:
     runs-on: macos-latest
@@ -40,10 +38,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Deploy to local Mac
+      - name: Deploy to Natthawat's MacBook Air
         run: |
-          scp -r ./* user@your-mac-ip:/path/to/your/app  # Copy files to your Mac
-          ssh user@your-mac-ip 'cd /path/to/your/app && npm install && pm2 restart all'  # Adjust based on your deployment script
+          scp -r ./* natthawat@Natthawats-MacBook-Air:/Users/natthawat/Desktop/pm2-deployment  # Copy files to your MacBook
+          ssh natthawat@Natthawats-MacBook-Air 'cd /Users/natthawat/Desktop/pm2-deployment && npm install && pm2 restart all'  # Adjust based on your deployment script
+
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
