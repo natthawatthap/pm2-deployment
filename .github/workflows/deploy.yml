@@ -40,9 +40,8 @@ jobs:
 
       - name: Deploy to Natthawat's MacBook Air
         run: |
-          scp -r ./* natthawat@Natthawats-MacBook-Air:/Users/natthawat/Desktop/pm2-deployment  # Copy files to your MacBook
-          ssh natthawat@Natthawats-MacBook-Air 'cd /Users/natthawat/Desktop/pm2-deployment && npm install && pm2 restart all'  # Adjust based on your deployment script
-
+          scp -r ./* natthawat@184.22.163.118:/Users/natthawat/Desktop/pm2-deployment
+          ssh natthawat@184.22.163.118 'cd /Users/natthawat/Desktop/pm2-deployment && npm install && pm2 restart all'
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
